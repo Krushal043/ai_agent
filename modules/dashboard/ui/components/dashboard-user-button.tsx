@@ -26,7 +26,7 @@ export default function DashboardUserButton() {
         authClient.signOut({
             fetchOptions: {
                 onSuccess: () => {
-                    router.push('/auth/login')
+                    router.push('/sign-in')
                 }
             }
         })

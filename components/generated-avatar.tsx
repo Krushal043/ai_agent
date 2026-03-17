@@ -19,7 +19,7 @@ export default function GeneratedAvatar({
         avatar = createAvatar(botttsNeutral, {
             seed
         })
-    } {
+    } else {
         avatar = createAvatar(initials, {
             seed,
             fontWeight: 500,
