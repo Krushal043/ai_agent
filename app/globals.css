@@ -124,6 +124,13 @@
     @apply bg-background text-foreground;
   }
   html {
-  font-family: 'Roboto Mono', monospace;
+    font-family: "Roboto Mono", monospace;
+  }
+}
+
+@layer base {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
   }
 }

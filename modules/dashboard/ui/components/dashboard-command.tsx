@@ -1,6 +1,6 @@
 "use client";
 
-import { Command, CommandDialog, CommandEmpty, CommandInput, CommandList } from '@/components/ui/command';
+import { Command, CommandEmpty, CommandInput, CommandItem, CommandList, CommandResponsiveDialog } from '@/components/ui/command';
 import { Dispatch, SetStateAction } from 'react'
 
 interface Props {
@@ -10,14 +10,16 @@ interface Props {
 
 export default function DashboardCommand({ open, setOpen }: Props) {
     return (
-        <CommandDialog open={open} onOpenChange={setOpen}>
+        <CommandResponsiveDialog open={open} onOpenChange={setOpen}>
             <Command>
                 <CommandInput placeholder="Type a command or search..." />
                 <CommandList>
                     <CommandEmpty>No results found.</CommandEmpty>
-                    {/* <CommandItem>Test</CommandItem> */}
+                    <CommandItem>Test</CommandItem>
+                    <CommandItem>Test 1</CommandItem>
+                    <CommandItem>Test 2</CommandItem>
                 </CommandList>
             </Command>
-        </CommandDialog>
+        </CommandResponsiveDialog>
     )
 }
