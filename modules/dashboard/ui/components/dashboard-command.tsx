@@ -1,7 +1,7 @@
 "use client";
 
-import { Command, CommandDialog, CommandEmpty, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
-import React, { Dispatch, SetStateAction } from 'react'
+import { Command, CommandDialog, CommandEmpty, CommandInput, CommandList } from '@/components/ui/command';
+import { Dispatch, SetStateAction } from 'react'
 
 interface Props {
     open: boolean;
