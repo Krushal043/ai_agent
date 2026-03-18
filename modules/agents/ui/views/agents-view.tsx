@@ -1,16 +1,18 @@
 "use client"
 
-import ErrorState from '@/components/error-state';
-import LoadingState from '@/components/loading-state';
+import { useRouter } from 'next/navigation';
 import { useTRPC } from '@/trpc/client'
 import { useSuspenseQuery } from '@tanstack/react-query';
-import { DataTable } from '../components/data-table';
-import { columns } from '../components/columns';
+import ErrorState from '@/components/error-state';
+import LoadingState from '@/components/loading-state';
 import EmptyState from '@/components/empty-state';
 import { useAgentsFilters } from '@/modules/agents/hooks/use-agents-filters';
+import { DataTable } from '../components/data-table';
+import { columns } from '../components/columns';
 import DataPagination from '../components/data-pagination';
 
 export default function AgentsView() {
+    const router = useRouter()
     const [filters, setFilters] = useAgentsFilters()
     const trpc = useTRPC();
     const { data } = useSuspenseQuery(trpc.agents.getMany.queryOptions({
@@ -22,7 +24,10 @@ export default function AgentsView() {
             {data?.data.length === 0 ?
                 <EmptyState title="No Agents" description="Create your first agent to get started" /> :
                 <>
-                    <DataTable columns={columns} data={data?.data} />
+                    <DataTable
+                        columns={columns}
+                        data={data?.data}
+                        onRawClick={(row) => router.push(`/agents/${row.id}`)} />
                     <DataPagination
                         page={filters?.page}
                         totalPages={data?.totalPages}
@@ -36,7 +41,7 @@ export default function AgentsView() {
 export function AgentsViewError() {
     return (
         <ErrorState
-            title='Failed to load agents'
+            title='Failed to load agent'
             description='Please try again later.....'
         />
     )
@@ -45,7 +50,7 @@ export function AgentsViewError() {
 export function AgentsViewLoading() {
     return (
         <LoadingState
-            title='Loading Agents'
+            title='Loading Agent'
             description='This may take a few seconds.....'
         />
     )
