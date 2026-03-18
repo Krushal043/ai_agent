@@ -1,4 +1,3 @@
-import React from 'react'
 import { AgentGetOne } from '../../types';
 import { useTRPC } from '@/trpc/client';
 import { useRouter } from 'next/navigation';
@@ -29,6 +28,18 @@ export default function AgentForm({ onSuccess, onCancel, initialValues }: AgentF
         trpc.agents.create.mutationOptions({
             onSuccess: async () => {
                 await queryClient.invalidateQueries(trpc.agents.getMany.queryOptions({}));
+                onSuccess?.();
+            },
+            onError: (error) => {
+                toast.error(error.message)
+            }
+        })
+    )
+
+    const updateAgent = useMutation(
+        trpc.agents.update.mutationOptions({
+            onSuccess: async () => {
+                await queryClient.invalidateQueries(trpc.agents.getMany.queryOptions({}));
 
                 if (initialValues?.id) {
                     await queryClient.invalidateQueries(trpc.agents.getOne.queryOptions({
@@ -52,11 +63,14 @@ export default function AgentForm({ onSuccess, onCancel, initialValues }: AgentF
     })
 
     const isEdit = !!initialValues?.id;
-    const isPending = createAgent?.isPending;
+    const isPending = createAgent?.isPending || updateAgent?.isPending;
 
     const onSubmit = (values: z.infer<typeof agentsInsertSchema>) => {
         if (isEdit) {
-            console.log("update agent");
+            updateAgent?.mutate({
+                id: initialValues?.id as string,
+                ...values
+            })
         } else {
             createAgent?.mutate(values);
         }
