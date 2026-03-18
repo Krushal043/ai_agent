@@ -1,8 +1,7 @@
-import React from 'react'
-import { authClient } from '@/lib/auth-client'
-import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { authClient } from '@/lib/auth-client'
 import { useIsMobile } from '@/hooks/use-mobile';
+import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from 'lucide-react';
 import {
     DropdownMenu,
     DropdownMenuContent,

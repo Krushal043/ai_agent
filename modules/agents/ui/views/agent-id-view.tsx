@@ -1,18 +1,18 @@
 "use client"
 
-import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
-import { useTRPC } from '@/trpc/client';
-import ErrorState from '@/components/error-state';
-import LoadingState from '@/components/loading-state';
-import AgentIdViewHeader from './agent-id-view-header';
-import GeneratedAvatar from '@/components/generated-avatar';
-import { Badge } from '@/components/ui/badge';
-import { VideoIcon } from 'lucide-react';
+import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { VideoIcon } from 'lucide-react';
+import { useTRPC } from '@/trpc/client';
 import { useConfirm } from '@/hooks/use-confirm';
-import { useState } from 'react';
-import UpdateAgentDialog from '../components/update-agent-dialog';
+import { useMutation, useQueryClient, useSuspenseQuery } from '@tanstack/react-query';
+import ErrorState from '@/components/error-state';
+import LoadingState from '@/components/loading-state';
+import GeneratedAvatar from '@/components/generated-avatar';
+import { Badge } from '@/components/ui/badge';
+import AgentIdViewHeader from '@/modules/agents/ui/views/agent-id-view-header';
+import UpdateAgentDialog from '@/modules/agents/ui/components/update-agent-dialog';
 
 interface Props {
     agentId: string

@@ -1,5 +1,4 @@
 import { AlertCircleIcon } from 'lucide-react';
-import React from 'react'
 
 interface Props {
     title: string;

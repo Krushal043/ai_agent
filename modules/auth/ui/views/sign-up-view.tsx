@@ -3,21 +3,16 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-
 import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-
 import { Controller, useForm } from 'react-hook-form';
-
 import { FaGithub, FaGoogle } from 'react-icons/fa';
-
 import { OctagonAlertIcon } from 'lucide-react';
-
+import { authClient } from '@/lib/auth-client';
+import { zodResolver } from '@hookform/resolvers/zod';
 import { Card, CardContent } from '@/components/ui/card'
 import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { authClient } from '@/lib/auth-client';
 import { Alert, AlertTitle } from '@/components/ui/alert';
 
 const formSchema = z.object({

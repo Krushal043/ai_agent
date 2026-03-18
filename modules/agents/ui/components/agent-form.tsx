@@ -1,17 +1,17 @@
-import { AgentGetOne } from '../../types';
-import { useTRPC } from '@/trpc/client';
-import { useRouter } from 'next/navigation';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Controller, useForm } from 'react-hook-form';
 import z from 'zod';
-import { agentsInsertSchema } from '../../schemas';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
+import { Controller, useForm } from 'react-hook-form';
+import { useTRPC } from '@/trpc/client';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { AgentGetOne } from '@/modules/agents/types';
+import { agentsInsertSchema } from '@/modules/agents/schemas';
 import GeneratedAvatar from '@/components/generated-avatar';
 import { Field, FieldError, FieldGroup, FieldLabel } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Button } from '@/components/ui/button';
-import { toast } from 'sonner';
 
 interface AgentFormProps {
     onSuccess: () => void;

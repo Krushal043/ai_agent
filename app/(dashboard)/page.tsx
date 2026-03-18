@@ -1,8 +1,6 @@
-import { auth } from "@/lib/auth";
-
 import { redirect } from "next/navigation";
 import { headers } from "next/headers";
-
+import { auth } from "@/lib/auth";
 import HomeView from "@/modules/home/ui/view/home-view";
 
 export default async function Page() {

@@ -1,5 +1,5 @@
-import { DEFAULT_PAGE } from "@/constanst";
 import { parseAsInteger, parseAsString, useQueryStates } from "nuqs";
+import { DEFAULT_PAGE } from "@/constanst";
 
 export const useAgentsFilters = () => {
   return useQueryStates({

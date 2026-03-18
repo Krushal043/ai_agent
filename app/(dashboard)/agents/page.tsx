@@ -1,8 +1,8 @@
 import { Suspense } from 'react';
-import { SearchParams } from 'nuqs';
 import { ErrorBoundary } from 'react-error-boundary';
-import { getQueryClient, trpc } from '@/trpc/server';
+import { SearchParams } from 'nuqs';
 import { HydrationBoundary, dehydrate } from '@tanstack/react-query';
+import { getQueryClient, trpc } from '@/trpc/server';
 import AgentsView, { AgentsViewError, AgentsViewLoading } from '@/modules/agents/ui/views/agents-view'
 import AgentsListHeader from '@/modules/agents/ui/components/agents-list-header';
 import { loadSearchParams } from '@/modules/agents/params';
