@@ -1,7 +1,7 @@
 import { useRouter } from 'next/navigation';
+import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from 'lucide-react';
 import { authClient } from '@/lib/auth-client'
 import { useIsMobile } from '@/hooks/use-mobile';
-import { ChevronDownIcon, CreditCardIcon, LogOutIcon } from 'lucide-react';
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -76,7 +76,7 @@ export default function DashboardUserButton() {
                 </div>
                 <ChevronDownIcon className='size-4 shrink-0' />
             </DropdownMenuTrigger>
-            <DropdownMenuContent align='end' side='top' className='w-72'>
+            <DropdownMenuContent align='end' side='right' className='w-72'>
                 <DropdownMenuLabel>
                     <div className='flex flex-col gap-1'>
                         <span className='text-sm font-medium truncate'>{data?.user?.name}</span>

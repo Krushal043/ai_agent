@@ -1,11 +1,11 @@
 "use client"
-import React, { useState } from 'react'
-import { Button } from '@/components/ui/button'
+import { useState } from 'react'
 import { PlusIcon, XCircleIcon } from 'lucide-react'
 import { DEFAULT_PAGE } from '@/constanst'
 import { useAgentsFilters } from '@/modules/agents/hooks/use-agents-filters'
 import AgentsSearchFilter from '@/modules/agents/ui/components/agents-search-filter'
 import NewAgentDialog from '@/modules/agents/ui/components/new-agent-dialog'
+import { Button } from '@/components/ui/button'
 
 export default function AgentsListHeader() {
     const [filters, setFilters] = useAgentsFilters()
@@ -26,7 +26,7 @@ export default function AgentsListHeader() {
             <div className='py-4 px-4 md:px-8 flex flex-col gap-y-4'>
                 <div className='flex items-center justify-between'>
                     <h5 className='text-xl font-medium'>My Agent</h5>
-                    <Button onClick={() => setIsDialogOpen(true)}>
+                    <Button size="lg" onClick={() => setIsDialogOpen(true)}>
                         <PlusIcon />
                         New Agent
                     </Button>
