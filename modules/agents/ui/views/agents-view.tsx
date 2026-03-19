@@ -6,10 +6,10 @@ import { useSuspenseQuery } from '@tanstack/react-query';
 import ErrorState from '@/components/error-state';
 import LoadingState from '@/components/loading-state';
 import EmptyState from '@/components/empty-state';
-import { DataTable } from '@/modules/agents/ui/components/data-table';
-import { columns } from '@/modules/agents/ui/components/columns';
-import DataPagination from '@/modules/agents/ui/components/data-pagination';
+import { DataTable } from '@/components/data-table';
+import DataPagination from '@/components/data-pagination';
 import { useAgentsFilters } from '@/modules/agents/hooks/use-agents-filters';
+import { columns } from '@/modules/agents/ui/components/columns';
 
 export default function AgentsView() {
     const router = useRouter()
