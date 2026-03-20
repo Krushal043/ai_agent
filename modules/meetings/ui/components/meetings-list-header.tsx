@@ -1,12 +1,31 @@
 "use client"
 
 import { useState } from 'react'
-import { PlusIcon } from 'lucide-react'
-import NewMeetingDialog from '@/modules/meetings/ui/components/new-meeting-dialog'
+import { PlusIcon, XCircleIcon } from 'lucide-react'
+import { DEFAULT_PAGE } from '@/constanst'
 import { Button } from '@/components/ui/button'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+import NewMeetingDialog from '@/modules/meetings/ui/components/new-meeting-dialog'
+import MeetingsSearchFilter from '@/modules/meetings/ui/components/meetings-search-filter'
+import StatusFilter from '@/modules/meetings/ui/components/status-filter'
+import AgentIdFilter from '@/modules/meetings/ui/components/agent-id-filter'
+import { useMeetingsFilters } from '@/modules/meetings/hooks/use-meetings-filters'
 
 export default function MeetingsListHeader() {
+    const [filters, setFilters] = useMeetingsFilters()
     const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+    const isAnyFilterModified = !!filters.agentId || !!filters.status || !!filters.search
+
+    const onClearFilters = () => {
+        setFilters({
+            status: null,
+            agentId: "",
+            search: "",
+            page: DEFAULT_PAGE
+        })
+    }
+
     return (
         <>
             <NewMeetingDialog open={isDialogOpen} onOpenChange={setIsDialogOpen} />
@@ -18,9 +37,20 @@ export default function MeetingsListHeader() {
                         New Meeting
                     </Button>
                 </div>
-                <div className='flex items-center gap-x-2 p-1'>
-
-                </div>
+                <ScrollArea>
+                    <div className='flex items-center gap-x-2 p-1'>
+                        <MeetingsSearchFilter />
+                        <StatusFilter />
+                        <AgentIdFilter />
+                        {isAnyFilterModified && (
+                            <Button variant="outline" onClick={onClearFilters}>
+                                <XCircleIcon className='size-4' />
+                                Clear
+                            </Button>
+                        )}
+                    </div>
+                    <ScrollBar orientation='horizontal' />
+                </ScrollArea>
             </div>
         </>
     )
